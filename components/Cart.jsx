@@ -8,7 +8,6 @@ import {
 } from 'react-icons/ai';
 import {TiDeleteOutline} from 'react-icons/ti';
 import toast from 'react-hot-toast';
-
 import {useStateContext} from '../context/StateContext';
 import {urlFor} from '../lib/client';
 import getStripe from '../lib/getStripe';
@@ -36,11 +35,8 @@ const Cart = () => {
 		});
 
 		if (response.statusCode === 500) return;
-
 		const data = await response.json();
-
 		toast.loading('Redirecting...');
-
 		stripe.redirectToCheckout({sessionId: data.id});
 	};
 
@@ -55,7 +51,6 @@ const Cart = () => {
 					<span className='heading'>Your Cart</span>
 					<span className='cart-num-items'>({totalQuantities} items)</span>
 				</button>
-
 				{cartItems.length < 1 && (
 					<div className='empty-cart'>
 						<AiOutlineShopping size={150} />
